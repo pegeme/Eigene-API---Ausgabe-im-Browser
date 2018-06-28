@@ -33,14 +33,11 @@ weather = [{"Wetterdaten": {
 def send():
     if request.method == 'GET':
         return render_template('index.html')
-
-    city = request.form['city']
-
-    return render_template('city.html', city=city)
-
-#Ausgabe Terminal
+        city = request.form['city']
+        return render_template('city.html', city=city)
 '''
-    if res.status_code == 200:
+else:
+     res.status_code == '200'
         res = requests.get('http://127.0.0.1:5000/send?q=Darmstadt')
         darmstadt = res.json()
            print(darmstadt)
