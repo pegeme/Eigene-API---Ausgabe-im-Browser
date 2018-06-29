@@ -15,10 +15,9 @@ weather = {
 }
 
 #AUSGABE BROWSER
-@app.route('/index', methods=['GET'])
+@app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
-
 
 @app.route('/city', methods=['GET','POST'])
 def city():
@@ -31,10 +30,10 @@ def city():
 
     acceptHeader = request.headers.get('Accept')
 
-    if acceptHeader.startswith( 'text/html' ):
+    if acceptHeader.startswith('text/html'):
         return render_template('city.html', forecast=content['Desc'], temp=content['Grad'])
 
-    if acceptHeader.startswith( 'application/json' ):
+    if acceptHeader.startswith('application/json'):
         return jsonify(content)
 
     return render_template('city.html', city=city)
